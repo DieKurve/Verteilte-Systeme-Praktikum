@@ -1,0 +1,81 @@
+version: "3.7"
+
+services:
+  centralserver:
+     build: docker/centralServer
+     ports:
+       - "127.0.0.1:8080:8080"
+     hostname: centralserver
+     depends_on:
+      - "mqttbroker"
+
+  fuelsensor:
+    build:
+       context: docker/sensors/
+    depends_on:
+      - "mqttbroker"
+    entrypoint: ./sensor 1
+
+  meanspeedsensor:
+    build:
+      context: docker/sensors/
+    depends_on:
+      - "mqttbroker"
+    entrypoint: ./sensor 2
+
+  speedsensor:
+    build:
+      context: docker/sensors/
+    depends_on:
+      - "mqttbroker"
+    entrypoint: ./sensor 3
+
+  trafficsensor:
+    build:
+      context: docker/sensors/
+    depends_on:
+      - "mqttbroker"
+    entrypoint: ./sensor 4
+
+  mqttbroker:
+    image: eclipse-mosquitto:latest
+    hostname: mqttbroker
+    ports: 
+    - "127.0.0.1:1883:1883"
+
+  serviceproviderprimary:
+    build:
+      context: docker/serviceProvider
+    hostname: serviceproviderPrimary
+    depends_on:
+      - "primarydatabase"
+    entrypoint: sh ./serviceProvider/bin/serviceProvider primary
+
+  serviceprovidersecondary:
+    build:
+      context: docker/serviceProvider
+    hostname: serviceproviderSecondary
+    depends_on:
+      - "secondarydatabase"
+    entrypoint: sh ./serviceProvider/bin/serviceProvider secondary
+
+  primarydatabase:
+    image: postgres:13-alpine
+    ports:
+      - "127.0.0.1:5432:5432"
+    hostname: primarydatabase
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: vspraktikum
+      POSTGRES_DB: praktikumdb
+
+  secondarydatabase:
+    image: postgres:13-alpine
+    ports:
+      - "127.0.0.1:5433:5432"
+    hostname: secondarydatabase
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: vspraktikum
+      POSTGRES_DB: praktikumdb
+
