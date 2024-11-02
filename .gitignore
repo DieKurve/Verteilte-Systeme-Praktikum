@@ -73,6 +73,8 @@ Google_tests/Google_Tests_run
 
 *.cbp
 
+build/
+
 # Gradle
 
 .gradle

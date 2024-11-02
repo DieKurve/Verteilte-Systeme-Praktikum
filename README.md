@@ -17,6 +17,7 @@ Folgende Software muss zum Kompilieren installiert sein:
 - CMake Version 3.13
 - GCC Version 9
 - Java 11
+- paho-mqtt-c++ Bibliothek v.1.3.0 (https://github.com/eclipse-paho/paho.mqtt.cpp)
 
 Zur Generierung der Dokumentation muss Doxygen installiert sein und mit dem Skript doc.sh kann die Dokumentation des Projekts generiert werden
 

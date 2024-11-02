@@ -23,7 +23,7 @@ add_executable(sensor
         src/sensors/speedSensor.cpp
         src/sensors/trafficSensor.hpp
         src/sensors/trafficSensor.cpp
-        /usr/local/include/mqtt/async_client.h
+        /usr/include/mqtt/async_client.h
         )
 
 target_link_libraries(sensor PahoMqttCpp::paho-mqttpp3)

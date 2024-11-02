@@ -16,27 +16,24 @@ plugins {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
     mavenCentral()
 }
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:23.0'
-
+    implementation'com.google.guava:guava:33.3.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    implementation 'org.apache.thrift:libthrift:0.13.0'
-    implementation 'org.postgresql:postgresql:42.2.18'
+    implementation 'org.apache.thrift:libthrift:0.21.0'
+    implementation 'org.postgresql:postgresql:42.7.2'
     implementation 'org.slf4j:slf4j-simple:1.7.30'
-    compile 'org.junit.jupiter:junit-jupiter:5.6.3'
+    implementation 'org.junit.jupiter:junit-jupiter:5.6.3'
     def junitJupiterVersion = '5.6.3'
-    testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-    testCompile "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
-    testCompile "org.testcontainers:testcontainers:1.15.1"
-    testCompile "org.testcontainers:junit-jupiter:1.15.1"
+    testImplementation "org.testcontainers:testcontainers:1.20.3"
+    testImplementation "org.testcontainers:junit-jupiter:1.15.1"
 
 
 
