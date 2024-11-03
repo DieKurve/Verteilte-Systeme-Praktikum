@@ -22,12 +22,7 @@ cd ../../../..
 
 # 5. ausführbare Dateien in die jeweilen Ordner in docker/ verschieben
 mv sensor docker/sensors/
-cp deb/libpaho-mqtt.cpp-1.2.0-Linux.deb docker/sensors
-cp deb/libpaho-mqtt_1.3.8_amd64.deb docker/sensors
-
 mv centralserver docker/centralServer/
-cp deb/libpaho-mqtt.cpp-1.2.0-Linux.deb docker/centralserver
-cp deb/libpaho-mqtt_1.3.8_amd64.deb docker/centralserver
 
 # 6. docker-compose build && docker-compose up
 
